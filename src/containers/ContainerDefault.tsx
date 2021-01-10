@@ -15,12 +15,7 @@ const StyledContainerDafault = styled.div`
   justify-items: center;
   justify-content: center;
   grid-template-columns: repeat(8,1fr);
- 
   overflow-x: hidden;
-
-  @media (min-width: 768px) {
-    grid-template-rows: repeat(10,10vh);
-  }
 `
 
 const ContainerDefault = () => {

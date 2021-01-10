@@ -1,5 +1,7 @@
-import React from "react";
+
 import styled from 'styled-components';
+import Notice from "../components/Notice";
+import Cards from "../components/Cards";
 
 const HomeMain = styled.main`
   grid-column: 1/9;
@@ -13,16 +15,14 @@ const HomeMain = styled.main`
     @media (min-width: 768px) {
       grid-row: 3/10;
       width: 90%;
-      flex-direction: row;
     }
 `
 
 const Home = () => {
   return (
-    <HomeMain>
-      <div>
-        Olá Fulano
-            </div>
+    <HomeMain role="main">
+      <Notice />
+      <Cards />
     </HomeMain>
 
   );

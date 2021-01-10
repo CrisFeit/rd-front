@@ -1,10 +1,11 @@
-import React ,{memo} from "react";
+import {memo} from "react";
 import styled from "styled-components"
 import company_logo from "../assets/rd.png";
 import { purple,white ,typeScale } from '../styles';
 
 const StyledHeader = styled.header`
   grid-column: 1/9;
+  grid-row: 1;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -12,12 +13,12 @@ const StyledHeader = styled.header`
   flex-direction: column;
   align-items: center;
   box-sizing:border-box;
-  padding: 0;
+  padding: 2% 0;
   border: none;
 
   @media(min-width: 768px){
+    padding: 1% 0;
     width: 90%;
-    padding: 4% 0;
     flex-direction: row;
     border-bottom:1px solid #e0e0e0;
   }
@@ -25,7 +26,6 @@ const StyledHeader = styled.header`
 
 const Logo = styled.img`
   height: auto;
-  padding: 5% 0;
   box-sizing: border-box;
 `
 const Nav = styled.nav`
@@ -58,6 +58,9 @@ const NavListItem = styled.li`
   width: 100%;
   display: flex;
   justify-content:center;
+  @media(min-width: 768px){
+      width: auto;
+    }
 `
 
 const NavLink = styled.a`
@@ -82,8 +85,8 @@ const Header = () => {
       <Nav>
         <NavList >
           {tecs.map(tec => (
-            <NavListItem>
-              <NavLink href="#" key={tec}>
+            <NavListItem key={`tec-${tec}`}>
+              <NavLink href="#" >
                 {tec.toUpperCase()}
               </NavLink>
             </NavListItem>

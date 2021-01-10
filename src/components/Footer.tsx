@@ -1,4 +1,4 @@
-import React,{memo} from "react";
+import {memo} from "react";
 import styled from "styled-components"
 import RDSmall from "../assets/rd-small.png";
 import Drogaraia from "../assets/drogaraia.png";
@@ -43,7 +43,7 @@ const Brands = styled.div`
   margin: 1em 0;
 `
 const ImageBrands = styled(Image)`
-  margin-right: 0.5em;
+  padding-right: 0.5em;
 `
 
 const Footer = () => {
