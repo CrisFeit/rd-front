@@ -1,16 +1,30 @@
-import { white, grey, dark } from "../settings/Colors";
+import { green,white, grey, dark } from "../settings/Colors";
 import { primaryFont } from "../settings/Typography";
+import bg from '../../assets/bg.jpg'
 
-export const defaultTheme = {
+interface Theme {
+  primaryFont: string,
+  primaryColor: string,
+  textPrimaryColor : string,
+  textColor: string,
+  textFieldBackground: string ,
+  bodyBackground: string | any,
+}
+
+export const defaultTheme:Theme = {
+  primaryFont: primaryFont,
+  primaryColor: green,
+  textPrimaryColor:green,
   textColor: grey,
   textFieldBackground: white,
-  bodyBackground: "#ffffff",
-  primaryFont: primaryFont,
+  bodyBackground: `url(${bg})`,
 };
 
-export const blackFridayTheme = {
+export const blackFridayTheme:Theme = {
+  primaryFont: primaryFont,
+  primaryColor: green,
+  textPrimaryColor:white,
   textColor: white,
   textFieldBackground: dark,
   bodyBackground: "#000000",
-  primaryFont: primaryFont,
 };

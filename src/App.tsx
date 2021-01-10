@@ -3,7 +3,8 @@ import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './styles/global/GlobalStyle';
 import  { defaultTheme,blackFridayTheme }  from './styles';
 
-import Home from "./pages/Home";
+
+import ContainerDefault from "./containers/ContainerDefault";
 
 function App() {
 
@@ -11,9 +12,9 @@ function App() {
   // const [showModal, setShowModal] = useState(false);
 
   return (
-    <ThemeProvider theme={useBlackFridayTheme ? blackFridayTheme : defaultTheme}>
+    <ThemeProvider theme={useBlackFridayTheme ? blackFridayTheme :  defaultTheme}>
         <GlobalStyle />
-            <Home />
+        <ContainerDefault />
     </ThemeProvider>
   );
 }
