@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 
 import styled from 'styled-components'
 import { typeScale } from '../styles'
@@ -15,7 +15,7 @@ const Overlay = styled.div`
     overflow-x: hidden;
     z-index:10;
     display: flex;
-   
+    transition : all 0.3s;   
 `
 const ModalContainer = styled.div`
     margin: auto;
@@ -34,6 +34,8 @@ const ModalToggle = styled.button`
 `
 const ModalContent = styled.div`
     padding: 5%;
+    font-weight:300;
+    line-height: 1.2;
     font-size: ${typeScale.listItem};
     color: ${({ theme }) => theme.textColor};
     background-color: ${({ theme }) => theme.textFieldBackground};
@@ -47,11 +49,11 @@ const Modal = () => {
     const { modalData ,setModalData} = useContext(ModalContext);
 
     return !modalData ? null :(
-        <Overlay>
+        <Overlay onClick={(event)=> event.currentTarget === event.target  && setModalData(null)}>
             <ModalContainer>
                 <ModalToggle onClick={()=> setModalData(null)}>&#10006;</ModalToggle>
                 <ModalContent>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare tellus magna, et congue purus malesuada at. Suspendisse mattis ipsum id eros elementum facilisis. Aliquam non convallis magna. Aliquam ultrices purus sit amet eleifend facilisis. Aliquam tempus lectus ut sapien ullamcorper, quis vestibulum nisl elementum. In purus est, eleifend in sodales ut, dapibus et felis. Phasellus posuere et nisi sit amet consectetur. Donec a nibh id sapien pulvinar varius id quis massa. Mauris sagittis id leo in ultrices. Phasellus nec viverra purus.
+                    {modalData}
                 </ModalContent>
             </ModalContainer>
         </Overlay>

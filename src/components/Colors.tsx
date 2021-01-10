@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 import { typeScale, colors } from '../styles';
 
@@ -6,12 +7,15 @@ const ColorsList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items:center;
 `
 const ColorItem = styled.li`
     margin: 0 5px;
     text-align: center;
     padding: .2em 0;
     font-size: ${typeScale.listItem};
+    display:flex;
+    align-items:center;
     &::before{
         content: "";
         display: inline-block;
@@ -23,7 +27,7 @@ const ColorItem = styled.li`
     }
 `
 
-function Notice() {
+const Colors =()=> {
     return (
 
             <ColorsList>
@@ -41,4 +45,4 @@ function Notice() {
     )
 }
 
-export default Notice
+export default memo(Colors)

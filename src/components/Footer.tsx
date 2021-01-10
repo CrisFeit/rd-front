@@ -16,7 +16,7 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2% 0;
+  padding: 3% 0;
     @media (min-width: ${screen.desktop}) {
       padding:  0;
       justify-content: space-between;

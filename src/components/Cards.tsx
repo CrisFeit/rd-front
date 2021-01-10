@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useState,useContext } from 'react';
+import styled , {ThemeContext} from 'styled-components';
 import { screen,typeScale,red, yellow, purple, white } from '../styles';
 import ImageDesktop from '../assets/desktop.png'
 import ImageTablet from '../assets/tablet.png'
 import ImageMobile from '../assets/mobile.png'
+import { ModalContext } from '../context/ModalcontextProvider'
 
 // ----------------------------------------------Style-----------------------------------------------
 const CardsContainer = styled.div`
@@ -48,13 +49,35 @@ const CardImage = styled.img`
 
 const CardText = styled.div`
     width: 100%;
-    overflow-y: ${props => props?.defaultValue};
+    overflow-y: hidden;
     overflow-x: hidden;
     min-height: 120px;
     max-height: 120px;
     padding: 5%;
     text-align: left;
     color: ${({ theme }) => theme.textColor};
+
+    &.accordion{
+        overflow-y: auto;
+    }
+
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 5px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+        background: ${({ color }) => color};
+    }
+  
+    &::-webkit-scrollbar-track {
+        background:${({ theme }) => theme.textFieldBackground};
+    }
+  
+    &{
+        scrollbar-face-color: ${({ color }) => color};
+        scrollbar-track-color: ${white};
+    }
 `
 
 const CardButtonContainer = styled.div`
@@ -86,7 +109,6 @@ interface Card {
     type: string,
     textButton: string,
     text: string,
- 
 }
 
 const arrayOfCards: Array<Card> = [
@@ -95,7 +117,6 @@ const arrayOfCards: Array<Card> = [
         image: ImageDesktop,
         color: `${red}`,
         type: 'accordion',
-       
         textButton: 'Leia mais...',
         text: "Quando pressionado o botão Leia mais... o restante da informação deverá aparecer em scroll down. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper at enim eget suscipit. Sed congue nisi ac purus placerat maximus sit amet molestie neque. Suspendisse imperdiet velit sit amet erat vestibulum varius. Pellentesque rhoncus pretium neque, volutpat molestie nibh hendrerit sit amet. Vestibulum id justo a enim maximus fermentum eget nec libero. Morbi tempus, lacus in molestie posuere, justo metus accumsan sapien, vitae tincidunt purus neque quis dolor. Sed hendrerit arcu a diam porttitor sagittis. Sed faucibus ligula in lorem aliquet, at condimentum est gravida. Nullam tempor lacinia metus, id mattis lectus posuere ut. Vivamus vel nisi nec leo fermentum mollis. In fringilla eget mauris ut porttitor."
     },
@@ -104,7 +125,6 @@ const arrayOfCards: Array<Card> = [
         image: ImageTablet,
         color: `${yellow}`,
         type: 'modal',
-      
         textButton: 'Leia mais...',
         text: "Quando pressionado o botão Leia mais.. informação deverá aparecer completa em um popup na tela.",
        
@@ -114,7 +134,6 @@ const arrayOfCards: Array<Card> = [
         image: ImageMobile,
         color: `${purple}`,
         type: 'toggle',
-      
         textButton: 'Alterar tema...',
         text: "Quando pressionado o botão alterar tema... modifique o tema do site para black friday a seu gosto."
     },
@@ -122,26 +141,44 @@ const arrayOfCards: Array<Card> = [
 // --------------------------------------------Instance--------------------------------------------
 
 
+
+
 const Cards = ()=>{
 
+    const { toggleTheme ,changeTheme} = useContext(ThemeContext);
+    const { setModalData } = useContext(ModalContext);
     const [scrollBar, setscrollBar] = useState(false)
+
+    function cardActive(card: Card){
+        const { type , text} = card
+        switch (type) {
+            case 'accordion': setscrollBar(!scrollBar)
+                break;
+            case 'toggle': toggleTheme(!changeTheme)
+                break;
+            case 'modal': setModalData(text)
+                break;
+            default:
+                break;
+        }
+    }
 
     return (
         <CardsContainer>
             {
                 arrayOfCards.map((card: Card) => (
-                    <StyledCard >
+                    <StyledCard key={card.title} >
                         <CardScreen color={card.color}>
                             <CardImage src={card.image} />
                             <CardTitle>
                                 Site Responsivo <br />{card.title.toUpperCase()}
                             </CardTitle>
                         </CardScreen>
-                        <CardText defaultValue={card?.type == 'accordion' ? scrollBar ? 'auto' : 'hidden': 'hidden'}>
+                        <CardText color={card.color} className={card.type === 'accordion' && scrollBar ? card.type : ''}>
                             {card.text}
                         </CardText>
                         <CardButtonContainer>
-                            <CardButton color={card.color} onClick={()=> setscrollBar(!scrollBar)}>
+                            <CardButton color={card.color} onClick={()=> cardActive(card)}>
                                 {card.textButton}
                             </CardButton>
                         </CardButtonContainer>

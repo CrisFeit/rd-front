@@ -1,29 +1,26 @@
-import React, { createContext, useState, useEffect ,FC} from 'react';
+import React, { createContext, useState, useEffect} from 'react';
 
 interface ModalContextInterface {
-    modalDisplay: boolean,
     modalData: string | null,
-    setModalDisplay?: any,
-    setModalData?: any,
-  }
+    setModalData?: Function | any,
+}
 
 export const ModalContext = createContext<ModalContextInterface>({
-    modalDisplay : false,
     modalData: null,
 })
 
 const ModalContextProvider = (props : any) => {
-    const [modalDisplay, setModalDisplay] = useState(false)
+  
     const [modalData, setModalData] = useState(null)
 
-    const checkDisplay = async () => {
-        setModalDisplay(true)
+    const changeDisplay = async () => {
+        setModalData(modalData)
     }
 
-    useEffect(() => { checkDisplay() }, [modalData])
+    useEffect(() => { changeDisplay() }, [modalData])
 
     return (
-        <ModalContext.Provider value={{ modalData,setModalData,modalDisplay }}>
+        <ModalContext.Provider value={{ modalData,setModalData }}>
             {props.children}
         </ModalContext.Provider>
     );
