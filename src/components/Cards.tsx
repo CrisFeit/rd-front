@@ -1,6 +1,6 @@
-import { useState,useContext } from 'react';
-import styled , {ThemeContext} from 'styled-components';
-import { screen,typeScale,red, yellow, purple, white } from '../styles';
+import { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { screen, typeScale, red, yellow, purple, white } from '../styles';
 import ImageDesktop from '../assets/desktop.png'
 import ImageTablet from '../assets/tablet.png'
 import ImageMobile from '../assets/mobile.png'
@@ -24,10 +24,10 @@ const CardsContainer = styled.div`
 const StyledCard = styled.div`
     width: 30%;
     min-width: 200px;
-    height:auto;
+    margin: 5% auto;
     display:block;
-    line-height: 1.3;
-    font-size: ${typeScale.paragraph};
+    line-height: 1.4;
+    
     background-color: ${({ theme }) => theme.textFieldBackground};
     
 `
@@ -35,31 +35,39 @@ const CardScreen = styled.div`
     padding: 10% 5%;
     text-align:center;
     background-color:${({ color }) => color};
-` 
+`
 const CardTitle = styled.h3`
     margin-top: 10%;
     
     font-size: ${typeScale.listItem};
     color: ${white};
-` 
+`
 const CardImage = styled.img`
     display: block;
     margin: auto;
 `
 
-const CardText = styled.div`
+const CardTextContainer = styled.div`
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    min-height: 120px;
-    max-height: 120px;
+    height: 100px;
     padding: 5%;
-    text-align: left;
-    color: ${({ theme }) => theme.textColor};
+`
 
-    &.accordion{
+const CardText = styled.p`
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-align: left;
+    font-size: ${typeScale.paragraph};
+    color: ${({ theme }) => theme.textColor};
+        
+    &.--scroll{
+        max-height: 90px;
         overflow-y: auto;
     }
+    
 
     &::-webkit-scrollbar {
         width: 7px;
@@ -112,7 +120,7 @@ interface Card {
 }
 
 const arrayOfCards: Array<Card> = [
-    {   
+    {
         title: "desktop",
         image: ImageDesktop,
         color: `${red}`,
@@ -127,7 +135,7 @@ const arrayOfCards: Array<Card> = [
         type: 'modal',
         textButton: 'Leia mais...',
         text: "Quando pressionado o botão Leia mais.. informação deverá aparecer completa em um popup na tela.",
-       
+
     },
     {
         title: "mobile",
@@ -143,14 +151,14 @@ const arrayOfCards: Array<Card> = [
 
 
 
-const Cards = ()=>{
+const Cards = () => {
 
-    const { toggleTheme ,changeTheme} = useContext(ThemeContext);
+    const { toggleTheme, changeTheme } = useContext(ThemeContext);
     const { setModalData } = useContext(ModalContext);
     const [scrollBar, setscrollBar] = useState(false)
 
-    function cardActive(card: Card){
-        const { type , text} = card
+    function cardActive(card: Card) {
+        const { type, text } = card
         switch (type) {
             case 'accordion': setscrollBar(!scrollBar)
                 break;
@@ -174,11 +182,13 @@ const Cards = ()=>{
                                 Site Responsivo <br />{card.title.toUpperCase()}
                             </CardTitle>
                         </CardScreen>
-                        <CardText color={card.color} className={card.type === 'accordion' && scrollBar ? card.type : ''}>
-                            {card.text}
-                        </CardText>
+                        <CardTextContainer>
+                            <CardText color={card.color} className={card.type === 'accordion' && scrollBar ? '--scroll' : ''}>
+                                {card.text}
+                            </CardText>
+                        </CardTextContainer>
                         <CardButtonContainer>
-                            <CardButton color={card.color} onClick={()=> cardActive(card)}>
+                            <CardButton color={card.color} onClick={() => cardActive(card)}>
                                 {card.textButton}
                             </CardButton>
                         </CardButtonContainer>

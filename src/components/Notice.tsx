@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { typeScale, colors } from '../styles'
+import { typeScale } from '../styles'
 import Colors from './Colors'
 
 

@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Notice from "../components/Notice";
 import Cards from "../components/Cards";
-import { screen  } from '../styles';
+import { screen } from '../styles';
 
 const HomeMain = styled.main`
   grid-column: 1/9;
