@@ -1,5 +1,7 @@
-import styled from 'styled-components';
-import { typeScale, colors } from '../styles';
+import styled from 'styled-components'
+import { typeScale, colors } from '../styles'
+import Colors from './Colors'
+
 
 const NoticeContainer = styled.div`
   width:100%;
@@ -30,27 +32,6 @@ const Message = styled.p`
     text-align: center;
     color: ${({ theme }) => theme.textColor};
 `
-const ColorsList = styled.ul`
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`
-const ColorItem = styled.li`
-    margin: 0 5px;
-    text-align: center;
-    padding: .2em 0;
-    font-size: ${typeScale.paragraph};
-    &::before{
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width:15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color:${({color})=> color};
-    }
-`
 
 function Notice() {
     return (
@@ -62,17 +43,7 @@ function Notice() {
                 A fonte utilizada é a Open Sans de 300 a 800m exemplo: "Open Sans", Helvetica, sans-serif, arial;
                 Já as cores são
             </Message>
-            <ColorsList>
-                {Object.values(colors).map((color,index) => (
-                    <ColorItem key={`color-${index}`} color={color}>
-                        {
-                             index === Object.entries(colors).length -1 ? `${color}` 
-                            :index === Object.entries(colors).length -2 ?` ${color} e`
-                            :` ${color}, `
-                        }
-                    </ColorItem>
-                    ))}
-            </ColorsList>
+           <Colors />
         </NoticeContainer>
     )
 }

@@ -1,7 +1,7 @@
 import {memo} from "react";
 import styled from "styled-components"
 import company_logo from "../assets/rd.png";
-import { purple,white ,typeScale } from '../styles';
+import { screen,purple,white ,typeScale } from '../styles';
 
 const StyledHeader = styled.header`
   grid-column: 1/9;
@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   padding: 2% 0;
   border: none;
 
-  @media(min-width: 768px){
+  @media(min-width: ${screen.desktop}){
     padding: 1% 0;
     width: 90%;
     flex-direction: row;

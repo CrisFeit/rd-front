@@ -36,6 +36,7 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   font-family: ${primaryFont};
+  overflow-x: hidden;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -43,7 +44,9 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
+
 
 img{
   max-width: 100%;

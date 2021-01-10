@@ -1,4 +1,4 @@
-import {memo} from "react";
+import { memo } from "react";
 import styled from "styled-components"
 import RDSmall from "../assets/rd-small.png";
 import Drogaraia from "../assets/drogaraia.png";
@@ -6,7 +6,7 @@ import Drogasil from "../assets/drogasil.png";
 import Farmasil from "../assets/farmasil.png";
 import Univers from "../assets/univers.png";
 import Bio from "../assets/4bio.png";
-import { typeScale } from '../styles';
+import { screen ,typeScale } from '../styles';
 
 const StyledFooter = styled.footer`
   grid-column: 1/9;
@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 2% 0;
-    @media (min-width: 768px) {
+    @media (min-width: ${screen.desktop}) {
       padding:  0;
       justify-content: space-between;
       flex-direction: row;
