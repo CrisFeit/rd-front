@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import styled from 'styled-components'
 import { typeScale } from '../styles'
 import { ModalContext } from '../context/ModalcontextProvider'
@@ -39,17 +38,15 @@ const ModalContent = styled.div`
     font-size: ${typeScale.listItem};
     color: ${({ theme }) => theme.textColor};
     background-color: ${({ theme }) => theme.textFieldBackground};
-
     align-items:center;
 `
-
 
 const Modal = () => {
 
     const { modalData ,setModalData} = useContext(ModalContext);
 
     return !modalData ? null :(
-        <Overlay onClick={(event)=> event.currentTarget === event.target  && setModalData(null)}>
+        <Overlay onClick={(event)=> event.currentTarget === event.target && setModalData(null)}>
             <ModalContainer>
                 <ModalToggle onClick={()=> setModalData(null)}>&#10006;</ModalToggle>
                 <ModalContent>

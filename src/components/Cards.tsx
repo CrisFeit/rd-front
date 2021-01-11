@@ -22,14 +22,19 @@ const CardsContainer = styled.div`
     }
 `
 const StyledCard = styled.div`
-    width: 30%;
+    width: 90%;
     min-width: 200px;
     margin: 5% auto;
     display:block;
     line-height: 1.4;
     background-color: ${({ theme }) => theme.textFieldBackground};
+    
+    @media (min-width:${screen.phone}) and (max-width: ${screen.laptop}) {
+        width: 80%;
+    }
     @media (min-width: ${screen.desktop}) {
         margin: 0 auto;
+        width: 30%;
     }
 `
 const CardScreen = styled.div`
@@ -39,21 +44,23 @@ const CardScreen = styled.div`
 `
 const CardTitle = styled.h3`
     margin-top: 10%;
-    
     font-size: ${typeScale.listItem};
     color: ${white};
 `
+
 const CardImage = styled.img`
     display: block;
     margin: auto;
-    height: fit-content;
+
+    @media (min-width:${screen.phone}) and (max-width: ${screen.laptop}) {
+        max-height: 100px;
+    }
 `
 
 const CardTextContainer = styled.div`
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    height: 100px;
     height: 100px;
     padding: 5%;
 `
