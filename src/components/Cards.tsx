@@ -62,11 +62,11 @@ const CardTextContainer = styled.div`
     overflow-y: hidden;
     overflow-x: hidden;
     height: 100px;
-    padding: 5%;
 `
 
 const CardText = styled.p`
     width: 100%;
+    padding: 5%;
     overflow-y: hidden;
     overflow-x: hidden;
     text-align: left;
@@ -74,7 +74,7 @@ const CardText = styled.p`
     color: ${({ theme }) => theme.textColor};
         
     &.--scroll{
-        max-height: 90px;
+        max-height: 100px;
         overflow-y: auto;
     }
     
