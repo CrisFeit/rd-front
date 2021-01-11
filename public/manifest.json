@@ -10,12 +10,12 @@
     {
       "src": "rd-small.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "45x32"
     },
     {
       "src": "rd.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "180x78"
     }
   ],
   "start_url": ".",
