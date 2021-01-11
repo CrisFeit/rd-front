@@ -29,7 +29,7 @@ const StyledCard = styled.div`
     line-height: 1.4;
     background-color: ${({ theme }) => theme.textFieldBackground};
     @media (min-width: ${screen.desktop}) {
-        margin: auto;
+        margin: 0 auto;
     }
 `
 const CardScreen = styled.div`
@@ -46,12 +46,14 @@ const CardTitle = styled.h3`
 const CardImage = styled.img`
     display: block;
     margin: auto;
+    height: fit-content;
 `
 
 const CardTextContainer = styled.div`
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
+    height: 100px;
     height: 100px;
     padding: 5%;
 `
