@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { typeScale } from '../styles'
+import { typeScale,screen } from '../styles'
 import Colors from './Colors'
 
 
 const NoticeContainer = styled.div`
   width:100%;
-  margin: 1% auto;
+  margin: 5% auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,13 +24,18 @@ const Strong = styled.strong`
     font-weight: 800;
 `
 const Message = styled.p`
-    width: 60%;
-    margin: 1% auto;
+    width: 80%;
+    margin: 5% auto;
     font-size: ${typeScale.subheading};
     font-weight: 300;
     line-height: 1.5;
     text-align: center;
     color: ${({ theme }) => theme.textColor};
+
+    @media (min-width: ${screen.desktop}) {
+        margin: 2% auto;
+        width: 60%;
+    }
 `
 
 function Notice() {

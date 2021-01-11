@@ -9,7 +9,7 @@ import { ModalContext } from '../context/ModalcontextProvider'
 // ----------------------------------------------Style-----------------------------------------------
 const CardsContainer = styled.div`
   width:100%;
-  margin: 5% auto;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,9 +27,10 @@ const StyledCard = styled.div`
     margin: 5% auto;
     display:block;
     line-height: 1.4;
-    
     background-color: ${({ theme }) => theme.textFieldBackground};
-    
+    @media (min-width: ${screen.desktop}) {
+        margin: auto;
+    }
 `
 const CardScreen = styled.div`
     padding: 10% 5%;
