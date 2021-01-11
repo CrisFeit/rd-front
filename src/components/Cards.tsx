@@ -177,7 +177,7 @@ const Cards = () => {
                 arrayOfCards.map((card: Card) => (
                     <StyledCard key={card.title} >
                         <CardScreen color={card.color}>
-                            <CardImage src={card.image} />
+                            <CardImage src={card.image} alt={card.title} />
                             <CardTitle>
                                 Site Responsivo <br />{card.title.toUpperCase()}
                             </CardTitle>
