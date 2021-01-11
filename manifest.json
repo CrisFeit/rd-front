@@ -1,0 +1,25 @@
+{
+  "short_name": "RD App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "rd-small.png",
+      "type": "image/png",
+      "sizes": "45x32"
+    },
+    {
+      "src": "rd.png",
+      "type": "image/png",
+      "sizes": "180x78"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
